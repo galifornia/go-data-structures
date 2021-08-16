@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // MaxHeap struct has a slice that holds the array
 type MaxHeap struct {
 	array []int
@@ -88,19 +86,19 @@ func (h *MaxHeap) swap(i1, i2 int) {
 	h.array[i1], h.array[i2] = h.array[i2], h.array[i1]
 }
 
-func main() {
-	maxHeap := &MaxHeap{}
-	buildHeap := []int{10, 20, 30, 5, 6, 7, 43, 35}
+// func main() {
+// 	maxHeap := &MaxHeap{}
+// 	buildHeap := []int{10, 20, 30, 5, 6, 7, 43, 35}
 
-	fmt.Println("Creating heap from array of ints:", buildHeap)
-	for _, v := range buildHeap {
-		maxHeap.Insert(v)
-		fmt.Println((maxHeap))
-	}
+// 	fmt.Println("Creating heap from array of ints:", buildHeap)
+// 	for _, v := range buildHeap {
+// 		maxHeap.Insert(v)
+// 		fmt.Println((maxHeap))
+// 	}
 
-	fmt.Println("-------Extracting test-------")
-	for i := 0; i < 5; i++ {
-		max := maxHeap.Extract()
-		fmt.Println(max, "extracted, heap is now:", maxHeap)
-	}
-}
+// 	fmt.Println("-------Extracting test-------")
+// 	for i := 0; i < 5; i++ {
+// 		max := maxHeap.Extract()
+// 		fmt.Println(max, "extracted, heap is now:", maxHeap)
+// 	}
+// }
