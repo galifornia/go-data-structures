@@ -14,6 +14,9 @@ func (s *Stack) Push(v int) {
 // pop
 func (s *Stack) Pop() int {
 	p := len(s.items) - 1
+	if p < 0 {
+		return -1
+	}
 	item := s.items[len(s.items)-1]
 	s.items = s.items[:p]
 	return item
@@ -28,6 +31,9 @@ func main() {
 
 	fmt.Println(stack.items)
 
+	stack.Pop()
+	stack.Pop()
+	stack.Pop()
 	stack.Pop()
 	stack.Pop()
 	stack.Pop()
