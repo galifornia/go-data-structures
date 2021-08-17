@@ -70,23 +70,23 @@ func (tree *BinaryTree) Search(k int) (bool, int) {
 	return false, count
 }
 
-func main() {
-	tree := BinaryTree{}
-	tree.root = &TNode{key: 23}
+// func main() {
+// 	tree := BinaryTree{}
+// 	tree.root = &TNode{key: 23}
 
-	nodeValues := []int{100, 21, 3, 17, 9, 204, 150, 53, 636, 664, 1, 45}
-	for _, v := range nodeValues {
-		tree.Insert(v)
-	}
-	fmt.Println(tree.root)
-	print(tree.root)
+// 	nodeValues := []int{100, 21, 3, 17, 9, 204, 150, 53, 636, 664, 1, 45}
+// 	for _, v := range nodeValues {
+// 		tree.Insert(v)
+// 	}
+// 	fmt.Println(tree.root)
+// 	print(tree.root)
 
-	fmt.Println(tree.Search(27))
-	fmt.Println(tree.Search(100))
-	fmt.Println(tree.Search(10))
-	fmt.Println(tree.Search(3))
-	fmt.Println(tree.Search(204))
-	fmt.Println(tree.Search(13))
-	fmt.Println(tree.Search(636))
-	fmt.Println(tree.Search(1))
-}
+// 	fmt.Println(tree.Search(27))
+// 	fmt.Println(tree.Search(100))
+// 	fmt.Println(tree.Search(10))
+// 	fmt.Println(tree.Search(3))
+// 	fmt.Println(tree.Search(204))
+// 	fmt.Println(tree.Search(13))
+// 	fmt.Println(tree.Search(636))
+// 	fmt.Println(tree.Search(1))
+// }
