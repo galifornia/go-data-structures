@@ -121,54 +121,54 @@ func (l *LinkedList) DeleteWithValue(v int) {
 	}
 }
 
-func main() {
-	// !FIXME: use proper tests
-	list := LinkedList{}
+// func main() {
+// 	// !FIXME: use proper tests
+// 	list := LinkedList{}
 
-	node1 := &Node{value: 3}
-	node2 := &Node{value: 13}
-	node3 := &Node{value: 5}
-	node4 := &Node{value: 8}
-	node5 := &Node{value: 15}
-	node6 := &Node{value: 8}
-	node8 := &Node{value: 8}
-	node7 := &Node{value: 25}
+// 	node1 := &Node{value: 3}
+// 	node2 := &Node{value: 13}
+// 	node3 := &Node{value: 5}
+// 	node4 := &Node{value: 8}
+// 	node5 := &Node{value: 15}
+// 	node6 := &Node{value: 8}
+// 	node8 := &Node{value: 8}
+// 	node7 := &Node{value: 25}
 
-	list.prepend(node1)
-	list.prepend(node2)
-	list.prepend(node3)
-	list.prepend(node4)
-	list.prepend(node5)
-	list.prepend(node6)
-	list.prepend(node7)
-	list.prepend(node8)
+// 	list.prepend(node1)
+// 	list.prepend(node2)
+// 	list.prepend(node3)
+// 	list.prepend(node4)
+// 	list.prepend(node5)
+// 	list.prepend(node6)
+// 	list.prepend(node7)
+// 	list.prepend(node8)
 
-	list.print()
-	fmt.Println(list.Get(5))
-	fmt.Println(list.Get(15))
+// 	list.print()
+// 	fmt.Println(list.Get(5))
+// 	fmt.Println(list.Get(15))
 
-	list.Insert(3, 77)
-	list.Insert(0, 666)
-	list.Insert(10, 112)
+// 	list.Insert(3, 77)
+// 	list.Insert(0, 666)
+// 	list.Insert(10, 112)
 
-	list.print()
+// 	list.print()
 
-	list.DeleteWithValue(5)
-	list.DeleteWithValue(8)
-	list.DeleteWithValue(666)
-	list.DeleteWithValue(15)
-	list.DeleteWithValue(13)
-	// list.DeleteWithValue(25)
-	// list.DeleteWithValue(13)
-	list.DeleteWithValue(3)
-	list.DeleteWithValue(1000)
-	list.DeleteWithValue(666)
+// 	list.DeleteWithValue(5)
+// 	list.DeleteWithValue(8)
+// 	list.DeleteWithValue(666)
+// 	list.DeleteWithValue(15)
+// 	list.DeleteWithValue(13)
+// 	// list.DeleteWithValue(25)
+// 	// list.DeleteWithValue(13)
+// 	list.DeleteWithValue(3)
+// 	list.DeleteWithValue(1000)
+// 	list.DeleteWithValue(666)
 
-	list.print()
+// 	list.print()
 
-	list.Delete(3)
-	list.print()
+// 	list.Delete(3)
+// 	list.print()
 
-	fmt.Println(list.Get(2))
+// 	fmt.Println(list.Get(2))
 
-}
+// }
