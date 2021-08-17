@@ -35,7 +35,7 @@ func (tree *BinaryTree) Insert(v int) {
 }
 
 // print: utility function that prints all keys present in the tree.
-func print(node *TNode) {
+func Print(node *TNode) {
 	if node == nil {
 		return
 	}

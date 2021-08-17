@@ -12,13 +12,13 @@ type LinkedList struct {
 	length int
 }
 
-func (l *LinkedList) prepend(n *Node) {
+func (l *LinkedList) Prepend(n *Node) {
 	n.next = l.head
 	l.length++
 	l.head = n
 }
 
-func (l *LinkedList) print() {
+func (l *LinkedList) Print() {
 	var p = l.head
 	for i := 0; i < l.length; i++ {
 		fmt.Printf("%d ", p.value)
