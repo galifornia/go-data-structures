@@ -18,7 +18,6 @@ func (tree *BinaryTree) Insert(v int) {
 	p := tree.root
 
 	for {
-
 		if p.key < v {
 			if p.right == nil {
 				p.right = &TNode{key: v}
@@ -40,6 +39,7 @@ func print(node *TNode) {
 	if node == nil {
 		return
 	}
+
 	fmt.Println(node.key)
 	if node.left != nil {
 		print(node.left)
