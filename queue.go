@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 )
 
 type Queue struct {
@@ -25,17 +24,17 @@ func (q *Queue) Dequeue() (int, error) {
 	return p, nil
 }
 
-func main() {
-	queue := &Queue{}
+// func main() {
+// 	queue := &Queue{}
 
-	queue.Enqueue(6)
-	queue.Enqueue(743)
-	queue.Enqueue(643)
-	queue.Enqueue(32)
-	queue.Enqueue(7)
-	fmt.Println(queue.items)
+// 	queue.Enqueue(6)
+// 	queue.Enqueue(743)
+// 	queue.Enqueue(643)
+// 	queue.Enqueue(32)
+// 	queue.Enqueue(7)
+// 	fmt.Println(queue.items)
 
-	queue.Dequeue()
-	queue.Dequeue()
-	fmt.Println(queue.items)
-}
+// 	queue.Dequeue()
+// 	queue.Dequeue()
+// 	fmt.Println(queue.items)
+// }

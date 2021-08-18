@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type Node struct {
-	value int
+	value interface{}
 	next  *Node
 }
 
@@ -28,13 +28,19 @@ func (l *LinkedList) Print() {
 }
 
 // Insert: accepts an index from 1 and a value int
-func (l *LinkedList) Insert(index, value int) {
+func (l *LinkedList) Insert(index int, value interface{}) {
 	// Abort if index is not valid
 	if index > l.length+1 || index <= 0 {
 		return
 	}
 
 	p := l.head
+	if p == nil {
+		l.head = &Node{value: value}
+		l.length++
+		return
+	}
+
 	// loop until the place right before the desired spot (index - 2)
 	for i := 0; i < index-2; i++ {
 		p = p.next
@@ -68,8 +74,19 @@ func (l *LinkedList) Delete(index int) {
 	l.length--
 }
 
+func (l *LinkedList) Search(value interface{}) bool {
+	p := l.head
+	for p != nil {
+		if p.value == value {
+			return true
+		}
+		p = p.next
+	}
+	return false
+}
+
 // Get: gets value of node at given index
-func (l *LinkedList) Get(index int) int {
+func (l *LinkedList) Get(index int) interface{} {
 	// Abort if index is not valid
 	if index > l.length || index <= 0 {
 		return -1
@@ -83,7 +100,7 @@ func (l *LinkedList) Get(index int) int {
 }
 
 // DeleteWithValue: deletes all nodes that contain the v input value
-func (l *LinkedList) DeleteWithValue(v int) {
+func (l *LinkedList) DeleteWithValue(v interface{}) {
 	// Abort if list is empty
 	if l.length == 0 {
 		return
