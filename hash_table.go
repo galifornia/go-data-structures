@@ -2,24 +2,24 @@ package main
 
 const ArraySize = 100
 
-type Hash struct {
+type HashTable struct {
 	table [ArraySize]*LinkedList
 }
 
 // Insert
-func (h *Hash) Insert(word string) {
+func (h *HashTable) Insert(word string) {
 	index := hash(word)
 	h.table[index].Insert(1, word)
 }
 
 // Search
-func (h *Hash) Search(word string) bool {
+func (h *HashTable) Search(word string) bool {
 	index := hash(word)
 	return h.table[index].Search(word)
 }
 
 // Delete
-func (h *Hash) Delete(word string) {
+func (h *HashTable) Delete(word string) {
 	index := hash(word)
 	h.table[index].DeleteWithValue(word)
 }
@@ -35,8 +35,8 @@ func hash(word string) int {
 }
 
 // Init
-func Init() *Hash {
-	htable := &Hash{}
+func Init() *HashTable {
+	htable := &HashTable{}
 	for i := range htable.table {
 		htable.table[i] = &LinkedList{}
 	}
@@ -64,7 +64,7 @@ func Init() *Hash {
 
 // 	fmt.Println(htable)
 
-// 	fmt.Println(htable.Search("MARTIN"))
+// 	fmt.Println(htable.Search("LUIS"))
 // 	htable.Delete("LUIS")
-// 	fmt.Println(htable.Search("MARTIN"))
+// 	fmt.Println(htable.Search("LUIS"))
 // }
