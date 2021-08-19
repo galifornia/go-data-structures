@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Node struct {
 	value interface{}
@@ -28,17 +31,23 @@ func (l *LinkedList) Print() {
 }
 
 // Insert: accepts an index from 1 and a value int
-func (l *LinkedList) Insert(index int, value interface{}) {
+func (l *LinkedList) Insert(index int, value interface{}) error {
 	// Abort if index is not valid
 	if index > l.length+1 || index <= 0 {
-		return
+		return errors.New("index is not valid. It should be between 1 and the length of the list + 1")
 	}
 
 	p := l.head
 	if p == nil {
 		l.head = &Node{value: value}
 		l.length++
-		return
+		return nil
+	}
+
+	if index == 1 {
+		newNode := &Node{value: value}
+		l.Prepend(newNode)
+		return nil
 	}
 
 	// loop until the place right before the desired spot (index - 2)
@@ -50,6 +59,7 @@ func (l *LinkedList) Insert(index int, value interface{}) {
 	aux := p.next
 	p.next = &Node{value: value, next: aux}
 	l.length++
+	return nil
 }
 
 // Delete: remove node at index (starts from 1)
@@ -86,17 +96,17 @@ func (l *LinkedList) Search(value interface{}) bool {
 }
 
 // Get: gets value of node at given index
-func (l *LinkedList) Get(index int) interface{} {
+func (l *LinkedList) Get(index int) (interface{}, error) {
 	// Abort if index is not valid
 	if index > l.length || index <= 0 {
-		return -1
+		return -1, errors.New("index is not valid. It should be between 1 and the length of the list + 1")
 	}
 
 	p := l.head
 	for i := 0; i < index-1; i++ {
 		p = p.next
 	}
-	return p.value
+	return p.value, nil
 }
 
 // DeleteWithValue: deletes all nodes that contain the v input value
