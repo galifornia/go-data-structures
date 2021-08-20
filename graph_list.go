@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 )
 
 type Edge struct {
@@ -103,26 +102,26 @@ func InitGraphList() *GraphList {
 	return graph
 }
 
-func main() {
-	graph := &GraphList{}
-	graph.vertices = &LinkedList{}
-	graph.AddVertex("Primer")
-	graph.AddVertex("Second")
-	graph.AddVertex(0)
-	graph.AddVertex(1)
-	graph.AddVertex(0)
-	graph.AddVertex("Last")
+// func main() {
+// 	graph := &GraphList{}
+// 	graph.vertices = &LinkedList{}
+// 	graph.AddVertex("Primer")
+// 	graph.AddVertex("Second")
+// 	graph.AddVertex(0)
+// 	graph.AddVertex(1)
+// 	graph.AddVertex(0)
+// 	graph.AddVertex("Last")
 
-	graph.AddVertex("Last")
-	graph.AddVertex("Last")
-	graph.Print()
+// 	graph.AddVertex("Last")
+// 	graph.AddVertex("Last")
+// 	graph.Print()
 
-	graph.AddEdge("Last", "Primer", 34)
-	graph.Print()
-	err := graph.AddEdge("Last", "Primer", 10)
-	if err != nil {
-		fmt.Println(err)
-	}
-	last := graph.vertices.selectVertex("Last")
-	last.adjacent.Print()
-}
+// 	graph.AddEdge("Last", "Primer", 34)
+// 	graph.Print()
+// 	err := graph.AddEdge("Last", "Primer", 10)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	last := graph.vertices.selectVertex("Last")
+// 	last.adjacent.Print()
+// }

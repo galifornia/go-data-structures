@@ -5,16 +5,16 @@ import (
 )
 
 type Stack struct {
-	items []int
+	items []interface{} // FIXME: use generics
 }
 
 // push
-func (s *Stack) Push(v int) {
+func (s *Stack) Push(v interface{}) {
 	s.items = append(s.items, v)
 }
 
 // pop
-func (s *Stack) Pop() (int, error) {
+func (s *Stack) Pop() (interface{}, error) {
 	p := len(s.items) - 1
 	if p < 0 {
 		return -1, errors.New("Stack is empty")
@@ -22,6 +22,10 @@ func (s *Stack) Pop() (int, error) {
 	item := s.items[len(s.items)-1]
 	s.items = s.items[:p]
 	return item, nil
+}
+
+func (s *Stack) IsEmpty() bool {
+	return len(s.items) <= 0
 }
 
 // func main() {

@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type TNode struct {
 	key   int
@@ -49,7 +52,7 @@ func Print(node *TNode) {
 	}
 }
 
-// Search: gets k input and returns true if there is key with that value
+// Search: gets k input and returns true if there is key with that value and also returns the number of steps
 func (tree *BinaryTree) Search(k int) (bool, int) {
 	p := tree.root
 	count := 0
@@ -70,6 +73,56 @@ func (tree *BinaryTree) Search(k int) (bool, int) {
 	return false, count
 }
 
+func (tree *BinaryTree) BFS() error {
+	queue := &Queue{}
+	queue.Enqueue(tree.root)
+
+	for !queue.IsEmpty() {
+		next, err := queue.Dequeue()
+		if err != nil {
+			return errors.New("Queue dequeuing went wrong")
+		}
+
+		node := next.(*TNode)
+		fmt.Println(node.key)
+
+		if node.left != nil {
+			queue.Enqueue(node.left)
+		}
+
+		if node.right != nil {
+			queue.Enqueue(node.right)
+		}
+	}
+	return nil
+}
+
+func (tree *BinaryTree) DFS() error {
+	stack := &Stack{}
+	stack.Push(tree.root)
+
+	for !stack.IsEmpty() {
+		item, err := stack.Pop()
+		if err != nil {
+			return errors.New("Stack poping went wrong")
+		}
+
+		node := item.(*TNode)
+		fmt.Println(node.key)
+
+		// From left to right
+		if node.right != nil {
+			stack.Push(node.right)
+		}
+
+		if node.left != nil {
+			stack.Push(node.left)
+		}
+
+	}
+	return nil
+}
+
 // func main() {
 // 	tree := BinaryTree{}
 // 	tree.root = &TNode{key: 23}
@@ -81,12 +134,16 @@ func (tree *BinaryTree) Search(k int) (bool, int) {
 // 	fmt.Println(tree.root)
 // 	print(tree.root)
 
-// 	fmt.Println(tree.Search(27))
-// 	fmt.Println(tree.Search(100))
-// 	fmt.Println(tree.Search(10))
-// 	fmt.Println(tree.Search(3))
-// 	fmt.Println(tree.Search(204))
-// 	fmt.Println(tree.Search(13))
-// 	fmt.Println(tree.Search(636))
-// 	fmt.Println(tree.Search(1))
+// fmt.Println(tree.Search(27))
+// fmt.Println(tree.Search(100))
+// fmt.Println(tree.Search(10))
+// fmt.Println(tree.Search(3))
+// fmt.Println(tree.Search(204))
+// fmt.Println(tree.Search(13))
+// fmt.Println(tree.Search(636))
+// fmt.Println(tree.Search(1))
+
+// 	tree.BFS()
+
+// 	tree.DFS()
 // }

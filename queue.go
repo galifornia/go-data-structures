@@ -5,16 +5,16 @@ import (
 )
 
 type Queue struct {
-	items []int
+	items []interface{}
 }
 
 //enqueue
-func (q *Queue) Enqueue(v int) {
+func (q *Queue) Enqueue(v interface{}) {
 	q.items = append(q.items, v)
 }
 
 // dequeue
-func (q *Queue) Dequeue() (int, error) {
+func (q *Queue) Dequeue() (interface{}, error) {
 	if len(q.items) == 0 {
 		return -1, errors.New("empty queue")
 	}
@@ -22,6 +22,10 @@ func (q *Queue) Dequeue() (int, error) {
 	p := q.items[0]
 	q.items = q.items[1:len(q.items)]
 	return p, nil
+}
+
+func (q *Queue) IsEmpty() bool {
+	return len(q.items) <= 0
 }
 
 // func main() {
