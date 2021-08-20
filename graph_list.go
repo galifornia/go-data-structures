@@ -82,7 +82,7 @@ func (g *GraphList) DJP() (map[string]*Edge, error) {
 			currentCost := costTable[edge.connection.key.(string)].weight
 
 			if currentCost > vertexCost+edge.weight {
-				costTable[edge.connection.key.(string)].weight = vertexCost + edge.weight
+				costTable[edge.connection.key.(string)].weight = edge.weight
 				costTable[edge.connection.key.(string)].connection = vertex
 			}
 			k = k.next
