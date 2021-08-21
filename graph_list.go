@@ -167,101 +167,101 @@ func (l *LinkedList) findShortestPath() *Edge {
 	return min
 }
 
-func (l *LinkedList) selectVertex(v interface{}) *Vertex {
-	p := l.head
+// func (l *LinkedList) selectVertex(v interface{}) *Vertex {
+// 	p := l.head
 
-	for p != nil {
-		vertex := p.value.(*Vertex)
-		if vertex.key == v {
-			return vertex
-		}
-		p = p.next
-	}
+// 	for p != nil {
+// 		vertex := p.value.(*Vertex)
+// 		if vertex.key == v {
+// 			return vertex
+// 		}
+// 		p = p.next
+// 	}
 
-	return nil
-}
+// 	return nil
+// }
 
-func (l *LinkedList) containsVertex(v interface{}) bool {
-	p := l.head
-	for p != nil {
-		vertex := p.value.(*Vertex)
-		if vertex.key == v {
-			return true
-		}
-		p = p.next
-	}
-	return false
-}
+// func (l *LinkedList) containsVertex(v interface{}) bool {
+// 	p := l.head
+// 	for p != nil {
+// 		vertex := p.value.(*Vertex)
+// 		if vertex.key == v {
+// 			return true
+// 		}
+// 		p = p.next
+// 	}
+// 	return false
+// }
 
-func (l *LinkedList) selectEdge(v interface{}) *Edge {
-	p := l.head
+// func (l *LinkedList) selectEdge(v interface{}) *Edge {
+// 	p := l.head
 
-	for p != nil {
-		edge := p.value.(*Edge)
-		if edge.connection.key == v {
-			return edge
-		}
-		p = p.next
-	}
-	return nil
-}
+// 	for p != nil {
+// 		edge := p.value.(*Edge)
+// 		if edge.connection.key == v {
+// 			return edge
+// 		}
+// 		p = p.next
+// 	}
+// 	return nil
+// }
 
-func (l *LinkedList) containsEdge(v interface{}) bool {
-	p := l.head
-	for p != nil {
-		edge := p.value.(*Edge)
-		if edge.connection.key == v {
-			return true
-		}
-		p = p.next
-	}
-	return false
-}
+// func (l *LinkedList) containsEdge(v interface{}) bool {
+// 	p := l.head
+// 	for p != nil {
+// 		edge := p.value.(*Edge)
+// 		if edge.connection.key == v {
+// 			return true
+// 		}
+// 		p = p.next
+// 	}
+// 	return false
+// }
 
-func InitGraphList() *GraphList {
-	graph := &GraphList{}
-	graph.vertices = &LinkedList{}
-	return graph
-}
+// func InitGraphList() *GraphList {
+// 	graph := &GraphList{}
+// 	graph.vertices = &LinkedList{}
+// 	return graph
+// }
 
-func main() {
-	graph := &GraphList{}
-	graph.vertices = &LinkedList{}
+// func main() {
+// 	graph := &GraphList{}
+// 	graph.vertices = &LinkedList{}
 
-	// graph.AddVertex("E")
-	graph.AddVertex("D")
-	graph.AddVertex("C")
-	graph.AddVertex("B")
-	graph.AddVertex("A")
+// 	// graph.AddVertex("E")
+// 	graph.AddVertex("D")
+// 	graph.AddVertex("C")
+// 	graph.AddVertex("B")
+// 	graph.AddVertex("A")
 
-	// graph.AddEdge("A", "B", 1)
-	// graph.AddEdge("A", "D", 4)
-	// graph.AddEdge("B", "E", 5)
-	// graph.AddEdge("B", "C", 3)
-	// graph.AddEdge("B", "D", 2)
-	// graph.AddEdge("D", "C", 5)
-	graph.AddEdge("A", "B", 2)
-	graph.AddEdge("B", "A", 2)
-	graph.AddEdge("A", "D", 1)
-	graph.AddEdge("D", "A", 1)
-	graph.AddEdge("B", "D", 2)
-	graph.AddEdge("D", "B", 2)
-	graph.AddEdge("C", "D", 3)
-	graph.AddEdge("D", "C", 3)
+// 	// graph.AddEdge("A", "B", 1)
+// 	// graph.AddEdge("A", "D", 4)
+// 	// graph.AddEdge("B", "E", 5)
+// 	// graph.AddEdge("B", "C", 3)
+// 	// graph.AddEdge("B", "D", 2)
+// 	// graph.AddEdge("D", "C", 5)
+// 	graph.AddEdge("A", "B", 2)
+// 	graph.AddEdge("B", "A", 2)
+// 	graph.AddEdge("A", "D", 1)
+// 	graph.AddEdge("D", "A", 1)
+// 	graph.AddEdge("B", "D", 2)
+// 	graph.AddEdge("D", "B", 2)
+// 	graph.AddEdge("C", "D", 3)
+// 	graph.AddEdge("D", "C", 3)
 
-	// graph.Print()
+// 	// graph.Print()
 
-	cost, err := graph.DJP()
-	if err != nil {
-		fmt.Println("error during DJP")
-	}
-	printCosts(cost)
+// 	cost, err := graph.DJP()
+// 	if err != nil {
+// 		fmt.Println("error during DJP")
+// 	}
+// 	printCosts(cost)
 
-	// Dijsktra
-	res, err := graph.Dijkstra()
+// 	// Dijsktra
+// 	res, err := graph.Dijkstra()
 
-	if err != nil {
-		fmt.Println("error during Dijkstra")
-	}
-	printCosts(res)
-}
+// 	if err != nil {
+// 		fmt.Println("error during Dijkstra")
+// 	}
+// 	printCosts(res)
+// }
