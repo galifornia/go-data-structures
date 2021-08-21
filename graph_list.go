@@ -75,6 +75,53 @@ func (g *GraphList) DJP() (*map[string]*Edge, error) {
 			return &costTable, errors.New("something went wrong with the queue")
 		}
 		vertex := v.(*Vertex)
+
+		edges := vertex.adjacent
+		k := edges.head
+		// loop through all edges of the current vertex we are visiting
+		for k != nil {
+			edge := k.value.(*Edge)
+			currentCost := costTable[edge.connection.key.(string)].weight
+
+			// update cost if currentCost is bigger than the edge weight
+			if currentCost > edge.weight {
+				costTable[edge.connection.key.(string)].weight = edge.weight
+				costTable[edge.connection.key.(string)].connection = vertex
+			}
+			k = k.next
+		}
+	}
+
+	return &costTable, nil
+}
+
+func (g *GraphList) Dijkstra() (*map[string]*Edge, error) {
+	// Map key is Vertex id and value is the cheapest Edge to that Vertex
+	costTable := make(map[string]*Edge)
+	// Create a queue for visiting all vertex
+	notVisited := &Queue{}
+	p := g.vertices.head
+	// loop through list of vertices to initialize cost map & queue
+	for p != nil {
+		vertex := p.value.(*Vertex)
+		notVisited.Enqueue(vertex)
+		// Initialize cost table with Edge with no connection and the most expensive weight
+		costTable[vertex.key.(string)] = &Edge{connection: nil, weight: math.MaxInt32}
+		p = p.next
+	}
+
+	// Cost of initial node is 0
+	root := g.vertices.head.value.(*Vertex)
+	costTable[root.key.(string)].weight = 0
+	costTable[root.key.(string)].connection = root
+
+	// Visit all vertices
+	for !notVisited.IsEmpty() {
+		v, err := notVisited.Dequeue()
+		if err != nil {
+			return &costTable, errors.New("something went wrong with the queue")
+		}
+		vertex := v.(*Vertex)
 		vertexCost := costTable[vertex.key.(string)].weight
 
 		edges := vertex.adjacent
@@ -85,9 +132,9 @@ func (g *GraphList) DJP() (*map[string]*Edge, error) {
 			currentCost := costTable[edge.connection.key.(string)].weight
 
 			// update cost if currentCost is bigger than the sum of the edge weight
-			//  & the weight of the path to the vertex
-			if currentCost > vertexCost+edge.weight {
-				costTable[edge.connection.key.(string)].weight = edge.weight
+			// & the weight of the path to the vertex
+			if currentCost > edge.weight+vertexCost {
+				costTable[edge.connection.key.(string)].weight = edge.weight + vertexCost
 				costTable[edge.connection.key.(string)].connection = vertex
 			}
 			k = k.next
@@ -209,4 +256,12 @@ func main() {
 		fmt.Println("error during DJP")
 	}
 	printCosts(cost)
+
+	// Dijsktra
+	res, err := graph.Dijkstra()
+
+	if err != nil {
+		fmt.Println("error during Dijkstra")
+	}
+	printCosts(res)
 }
